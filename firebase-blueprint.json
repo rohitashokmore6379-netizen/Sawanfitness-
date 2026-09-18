@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "gymSettings": {
+      "title": "Gym Settings",
+      "description": "Global official settings, contacts, and information for Sawan Fitness Club",
+      "type": "object",
+      "properties": {
+        "gymName": { "type": "string" },
+        "ownerName": { "type": "string" },
+        "email": { "type": "string" },
+        "contactNumber": { "type": "string" },
+        "whatsappNumber": { "type": "string" },
+        "address": { "type": "string" },
+        "pinCode": { "type": "string" },
+        "googleMapsUrl": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "updatedBy": { "type": "string" }
+      },
+      "required": ["gymName", "ownerName", "email", "contactNumber", "address", "pinCode"]
+    },
+    "inquiries": {
+      "title": "Member Inquiry",
+      "description": "Contact form and trial session inquiries submitted by prospective members",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "goal": { "type": "string" },
+        "preferredPlan": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["name", "phone", "goal"]
+    },
+    "members": {
+      "title": "Gym Member",
+      "description": "Enrolled fitness club members with attendance and plan details",
+      "type": "object",
+      "properties": {
+        "memberId": { "type": "string" },
+        "fullName": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "plan": { "type": "string" },
+        "joinDate": { "type": "string" },
+        "status": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["fullName", "phone", "plan", "joinDate", "status"]
+    },
+    "tasks": {
+      "title": "Gym Tasks & Schedule",
+      "description": "Daily gym operations, trainer schedules, and Google Tasks sync items",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "status": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "assignedTo": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "category", "status"]
+    }
+  },
+  "firestore": {
+    "defaultRules": "read: allow if true; write: allow if request.auth != null;"
+  }
+}

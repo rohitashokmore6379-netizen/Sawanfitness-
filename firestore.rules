@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Public gym settings: readable by all visitors, editable by authenticated staff/owner
+    match /gymSettings/{settingId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    // Member Inquiries: public can submit an inquiry; authenticated staff can read and manage
+    match /inquiries/{inquiryId} {
+      allow create: if true;
+      allow read, update, delete: if isAuthenticated();
+    }
+
+    // Gym Members roster: accessible only by authenticated staff
+    match /members/{memberId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // Tasks & Schedule: accessible only by authenticated staff
+    match /tasks/{taskId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // Default fallback
+    match /{document=**} {
+      allow read, write: if isAuthenticated();
+    }
+  }
+}
