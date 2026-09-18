@@ -1,0 +1,6 @@
+{
+  "name": "Sawan Fitness Club",
+  "description": "Official portal for Sawan Fitness Club in Gargoti, Maharashtra. Featuring training programs, membership plans, transformation stories, owner contact details, and admin business settings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
